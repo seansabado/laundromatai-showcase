@@ -23,7 +23,11 @@ This is a **runnable engineering showcase** of the patterns I apply when buildin
 | Firestore-style hooks      | Fake data loading that mirrors real Firestore query shape                 |
 | Multi-tenant role access   | Role-checked UI + guard ensures least-privilege per role                  |
 
-**Live demo →** [seansabado.github.io/laundromatai-showcase](https://seansabado.github.io/laundromatai-showcase/)
+**Live showcase demo →** [seansabado.github.io/laundromatai-showcase](https://seansabado.github.io/laundromatai-showcase/)
+
+**Production-style demo (Demo Mode) →** [app.laundromatai.app/app?demo=1](https://app.laundromatai.app/app?demo=1)
+
+Note: The production-style demo is a live app environment and may evolve. This showcase repo remains the stable engineering artifact.
 
 > **Demo walkthrough video** — _coming soon (Loom)._ See [docs/demo-script.md](docs/demo-script.md) for the full step-by-step guide you can follow yourself in under 90 seconds.
 
