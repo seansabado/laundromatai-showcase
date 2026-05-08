@@ -1,48 +1,14 @@
 # laundromatai-showcase
 
 [![CI](https://github.com/seansabado/laundromatai-showcase/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/seansabado/laundromatai-showcase/actions/workflows/ci.yml)
-[![Coverage](https://github.com/seansabado/laundromatai-showcase/actions/workflows/coverage.yml/badge.svg?branch=main)](https://github.com/seansabado/laundromatai-showcase/actions/workflows/coverage.yml)
-[![Pages](https://github.com/seansabado/laundromatai-showcase/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/seansabado/laundromatai-showcase/actions/workflows/pages.yml)
 [![Last Commit](https://img.shields.io/github/last-commit/seansabado/laundromatai-showcase?label=last%20commit)](https://github.com/seansabado/laundromatai-showcase/commits/main)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-
-## Recruiter Snapshot
-
-This is a safe public portfolio repository that demonstrates how I design multi-tenant SaaS architecture, offline-first POS interaction patterns, callable guard composition, and engineering quality gates (tests + CI + docs) without exposing proprietary code.
-
-## About Me
-
-Sean Raynon  
-Founder & CTO - LaundromatAI  
-[https://laundromatai.app](https://laundromatai.app)  
-[https://www.linkedin.com/in/seanraynon/](https://www.linkedin.com/in/seanraynon/)
 
 ## Overview
 
 This repository is a SAFE, NON-PROPRIETARY showcase of engineering patterns I use when building multi-tenant SaaS systems. It focuses on architecture style, separation of concerns, and implementation quality using fake data and generic examples.
 
 Nothing in this repository is copied from production systems.
-
-## Live Demo
-
-- GitHub Pages: [https://seansabado.github.io/laundromatai-showcase/](https://seansabado.github.io/laundromatai-showcase/)
-
-If this link is not live yet, trigger the Pages workflow once from Actions and it will publish automatically.
-
-## UI Demo Preview
-
-![Showcase Demo](docs/assets/showcase-demo.gif)
-
-## Architecture Diagram
-
-![Architecture Overview](docs/assets/architecture-overview.png)
-
-## Tech Stack
-
-- Frontend: React 19, TypeScript, Vite
-- Testing: Vitest, Testing Library
-- Automation: GitHub Actions (CI, Coverage, Pages)
-- Patterns: Offline queue, tenant context isolation, callable auth/guard/audit composition
 
 ## Quick Start
 
@@ -61,12 +27,6 @@ Quality commands:
 npm run typecheck
 npm run test
 npm run build
-```
-
-Run full validation in one command:
-
-```bash
-npm run validate
 ```
 
 ## Demo
@@ -105,21 +65,6 @@ npm run validate
 - Architecture decision records (ADR) included for key design choices
 - Security boundaries and exclusions documented explicitly
 
-## Design Tradeoffs
-
-- Architecture rationale and alternatives: [docs/design-tradeoffs.md](docs/design-tradeoffs.md)
-- ADR decision trail: [docs/adr/](docs/adr/)
-
-## System Design Review
-
-- Senior design review: [docs/system-design-review.md](docs/system-design-review.md)
-- Production readiness matrix: [docs/production-readiness.md](docs/production-readiness.md)
-- Failure drill walkthrough: [docs/failure-drill.md](docs/failure-drill.md)
-
-## What I Would Improve With More Time
-
-- Incremental roadmap: [docs/roadmap-next.md](docs/roadmap-next.md)
-
 ## How To Navigate
 
 - Docs first:
@@ -131,11 +76,6 @@ npm run validate
   - docs/security-boundaries.md
   - docs/case-study.md
   - docs/interview-walkthrough.md
-  - docs/design-tradeoffs.md
-  - docs/roadmap-next.md
-  - docs/system-design-review.md
-  - docs/production-readiness.md
-  - docs/failure-drill.md
   - docs/adr/
 - Frontend examples:
   - src/example-pos/
@@ -157,8 +97,6 @@ Use this repo as a portfolio artifact to discuss engineering approach, architect
 - Interview walkthrough script (5-minute + 15-minute): `docs/interview-walkthrough.md`
 - Security and trust boundaries: `docs/security-boundaries.md`
 - ADR decision trail: `docs/adr/*.md`
-- Tradeoff rationale: `docs/design-tradeoffs.md`
-- Future improvements and product-thinking roadmap: `docs/roadmap-next.md`
 
 ## Repository Governance
 
@@ -177,4 +115,7 @@ Use this repo as a portfolio artifact to discuss engineering approach, architect
 
 ## Author
 
-See the About Me section near the top for profile and contact links.
+Sean Raynon
+Founder & CTO - LaundromatAI
+[https://laundromatai.app](https://laundromatai.app)
+[https://www.linkedin.com/in/seanraynon/](https://www.linkedin.com/in/seanraynon/)
