@@ -427,11 +427,26 @@ h3 {
   font-weight: 600;
 }
 
-.trace-queued  { background: rgb(148 163 184 / 0.15); color: #94a3b8; }
-.trace-created { background: rgb(148 163 184 / 0.10); color: #64748b; }
-.trace-syncing { background: rgb(124 58 237 / 0.18); color: #a78bfa; }
-.trace-synced  { background: rgb(16 185 129 / 0.18); color: #34d399; }
-.trace-failed  { background: rgb(239 68 68 / 0.18); color: #f87171; }
+.trace-queued {
+  background: rgb(148 163 184 / 0.15);
+  color: #94a3b8;
+}
+.trace-created {
+  background: rgb(148 163 184 / 0.1);
+  color: #64748b;
+}
+.trace-syncing {
+  background: rgb(124 58 237 / 0.18);
+  color: #a78bfa;
+}
+.trace-synced {
+  background: rgb(16 185 129 / 0.18);
+  color: #34d399;
+}
+.trace-failed {
+  background: rgb(239 68 68 / 0.18);
+  color: #f87171;
+}
 
 .trace-note {
   color: var(--muted);

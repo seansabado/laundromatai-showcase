@@ -55,3 +55,12 @@ This is the full documentation index for `laundromatai-showcase`.
 | File                                                                       | Purpose                  |
 | -------------------------------------------------------------------------- | ------------------------ |
 | [assets/ui-demo-laundromatai-app.png](assets/ui-demo-laundromatai-app.png) | UI screenshot of the app |
+
+---
+
+## For Teams & Hiring
+
+| Doc                                | Purpose                                                               |
+| ---------------------------------- | --------------------------------------------------------------------- |
+| [pr-example.md](pr-example.md)     | Example self-review PR description — how I communicate in code review |
+| [../CHANGELOG.md](../CHANGELOG.md) | Release history with dated entries                                    |

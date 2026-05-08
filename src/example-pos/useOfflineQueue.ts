@@ -66,12 +66,7 @@ export const useOfflineQueue = (simulateFailure: boolean) => {
   );
 
   const markStatus = useCallback(
-    (
-      actionId: string,
-      from: QueueStatus,
-      to: QueueStatus,
-      note?: string,
-    ) => {
+    (actionId: string, from: QueueStatus, to: QueueStatus, note?: string) => {
       setQueue((prev) =>
         prev.map((item) =>
           item.actionId === actionId

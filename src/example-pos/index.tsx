@@ -87,7 +87,9 @@ export const ExamplePosModule = () => {
             checked={simulateFailure}
             onChange={(e) => setSimulateFailure(e.target.checked)}
           />
-          <span className={simulateFailure ? "toggle-text is-warn" : "toggle-text"}>
+          <span
+            className={simulateFailure ? "toggle-text is-warn" : "toggle-text"}
+          >
             Simulate Fail
           </span>
         </label>
@@ -164,7 +166,9 @@ export const ExamplePosModule = () => {
                   {action.status}
                 </span>
                 {action.retryCount > 0 ? (
-                  <span className="muted-badge">retry #{action.retryCount}</span>
+                  <span className="muted-badge">
+                    retry #{action.retryCount}
+                  </span>
                 ) : null}
                 <span className="muted-ts">{formatDate(action.createdAt)}</span>
               </article>
@@ -185,7 +189,9 @@ export const ExamplePosModule = () => {
           orders, toggle Simulate Fail, then Sync to see the full lifecycle.
         </p>
         {traceLog.length === 0 ? (
-          <p className="muted-empty">No events yet. Create an order or sync the queue.</p>
+          <p className="muted-empty">
+            No events yet. Create an order or sync the queue.
+          </p>
         ) : (
           <div className="trace-log">
             {traceLog.map((evt) => (
@@ -193,9 +199,13 @@ export const ExamplePosModule = () => {
                 <span className="trace-ts">{formatDate(evt.timestamp)}</span>
                 <span className="trace-id">{evt.actionId.slice(0, 16)}</span>
                 <span className="trace-transition">
-                  <span className={`trace-state trace-${evt.from}`}>{evt.from}</span>
+                  <span className={`trace-state trace-${evt.from}`}>
+                    {evt.from}
+                  </span>
                   <span className="trace-arrow">→</span>
-                  <span className={`trace-state trace-${evt.to}`}>{evt.to}</span>
+                  <span className={`trace-state trace-${evt.to}`}>
+                    {evt.to}
+                  </span>
                 </span>
                 {evt.note ? (
                   <span className="trace-note">{evt.note}</span>

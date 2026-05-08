@@ -5,6 +5,8 @@
 [![Last Commit](https://img.shields.io/github/last-commit/seansabado/laundromatai-showcase?label=last%20commit)](https://github.com/seansabado/laundromatai-showcase/commits/main)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
+**Stack:** React 19 · TypeScript · Vite · Vitest · Firebase patterns · Multi-tenant SaaS · Offline-first PWA
+
 > **Safe to share.** No proprietary source, no real customer data, no credentials.  
 > Everything here is fake data + generic patterns extracted from first principles.
 
@@ -22,6 +24,8 @@ This is a **runnable engineering showcase** of the patterns I apply when buildin
 | Multi-tenant role access   | Role-checked UI + guard ensures least-privilege per role                  |
 
 **Live demo →** [seansabado.github.io/laundromatai-showcase](https://seansabado.github.io/laundromatai-showcase/)
+
+> **Demo walkthrough video** — _coming soon (Loom)._ See [docs/demo-script.md](docs/demo-script.md) for the full step-by-step guide you can follow yourself in under 90 seconds.
 
 ---
 
@@ -97,6 +101,8 @@ See [docs/decisions-index.md](docs/decisions-index.md) for a summary of all ADRs
 - [docs/decisions-index.md](docs/decisions-index.md) — All ADRs summarized
 - [docs/feature-role-walkthrough.md](docs/feature-role-walkthrough.md) — Feature-to-role access map
 - [docs/production-hardening.md](docs/production-hardening.md) — Production-hardening patterns documented
+- [docs/pr-example.md](docs/pr-example.md) — Example self-review PR (how I communicate in code review)
+- [CHANGELOG.md](CHANGELOG.md) — Release history
 - [docs/offline-mode.md](docs/offline-mode.md) — Offline queue deep dive
 - [docs/multi-tenant-design.md](docs/multi-tenant-design.md) — Multi-tenant isolation design
 - [docs/security-boundaries.md](docs/security-boundaries.md) — What is and is not in scope
