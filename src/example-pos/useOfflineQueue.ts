@@ -12,8 +12,40 @@ export interface OfflineAction<T = Record<string, unknown>> {
   status: QueueStatus;
 }
 
-export const useOfflineQueue = () => {
+export interface TraceEvent {
+  eventId: string;
+  timestamp: string;
+  actionId: string;
+  from: QueueStatus | "created";
+  to: QueueStatus;
+  note?: string;
+}
+
+export const useOfflineQueue = (simulateFailure: boolean) => {
   const [queue, setQueue] = useState<OfflineAction[]>([]);
+  const [traceLog, setTraceLog] = useState<TraceEvent[]>([]);
+
+  const appendTrace = useCallback(
+    (
+      actionId: string,
+      from: QueueStatus | "created",
+      to: QueueStatus,
+      note?: string,
+    ) => {
+      setTraceLog((prev) => [
+        {
+          eventId: makeId("evt"),
+          timestamp: new Date().toISOString(),
+          actionId,
+          from,
+          to,
+          note,
+        },
+        ...prev,
+      ]);
+    },
+    [],
+  );
 
   const enqueue = useCallback(
     (type: string, payload: Record<string, unknown>) => {
@@ -27,32 +59,59 @@ export const useOfflineQueue = () => {
       };
 
       setQueue((prev) => [...prev, action]);
+      appendTrace(action.actionId, "created", "queued", "enqueued offline");
       return action;
     },
-    [],
+    [appendTrace],
   );
 
-  const markStatus = useCallback((actionId: string, status: QueueStatus) => {
-    setQueue((prev) =>
-      prev.map((item) =>
-        item.actionId === actionId ? { ...item, status } : item,
-      ),
-    );
-  }, []);
+  const markStatus = useCallback(
+    (
+      actionId: string,
+      from: QueueStatus,
+      to: QueueStatus,
+      note?: string,
+    ) => {
+      setQueue((prev) =>
+        prev.map((item) =>
+          item.actionId === actionId
+            ? {
+                ...item,
+                status: to,
+                retryCount:
+                  to === "syncing" && from === "failed"
+                    ? item.retryCount + 1
+                    : item.retryCount,
+              }
+            : item,
+        ),
+      );
+      appendTrace(actionId, from, to, note);
+    },
+    [appendTrace],
+  );
 
   const processQueue = useCallback(async () => {
     for (const action of queue) {
       if (action.status !== "queued" && action.status !== "failed") continue;
-      markStatus(action.actionId, "syncing");
-      try {
-        // Fake sync delay to simulate network processing.
-        await new Promise((resolve) => setTimeout(resolve, 150));
-        markStatus(action.actionId, "synced");
-      } catch {
-        markStatus(action.actionId, "failed");
+      const fromStatus = action.status;
+      markStatus(action.actionId, fromStatus, "syncing");
+      // Fake sync delay to simulate network processing.
+      await new Promise((resolve) => setTimeout(resolve, 250));
+      if (simulateFailure) {
+        markStatus(
+          action.actionId,
+          "syncing",
+          "failed",
+          "simulated network error",
+        );
+      } else {
+        markStatus(action.actionId, "syncing", "synced", "sync ok");
       }
     }
-  }, [markStatus, queue]);
+  }, [markStatus, queue, simulateFailure]);
+
+  const clearLog = useCallback(() => setTraceLog([]), []);
 
   const pendingCount = useMemo(
     () =>
@@ -67,5 +126,7 @@ export const useOfflineQueue = () => {
     enqueue,
     processQueue,
     pendingCount,
+    traceLog,
+    clearLog,
   };
 };

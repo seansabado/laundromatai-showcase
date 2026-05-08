@@ -319,6 +319,133 @@ h3 {
   margin-top: 3px;
 }
 
+.muted-badge {
+  font-size: 11px;
+  color: #f59e0b;
+  background: rgb(245 158 11 / 0.12);
+  border-radius: 4px;
+  padding: 1px 6px;
+}
+
+.muted-ts {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* ── Simulate Fail toggle ───────────────────────── */
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle-label input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: #ef4444;
+  cursor: pointer;
+}
+
+.toggle-text {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.toggle-text.is-warn {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+/* ── Telemetry / Trace Log ──────────────────────── */
+.telemetry-panel {
+  margin-top: 16px;
+}
+
+.telemetry-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.telemetry-hint {
+  margin-bottom: 10px;
+}
+
+.btn-sm {
+  font-size: 11px;
+  padding: 3px 10px;
+}
+
+.trace-log {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: "JetBrains Mono", "Fira Mono", "Cascadia Code", monospace;
+  font-size: 12px;
+}
+
+.trace-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 10px;
+  background: rgb(255 255 255 / 0.03);
+  border-radius: 6px;
+  border: 1px solid rgb(255 255 255 / 0.05);
+  flex-wrap: wrap;
+}
+
+.trace-ts {
+  color: var(--muted);
+  min-width: 160px;
+  font-size: 11px;
+}
+
+.trace-id {
+  color: #94a3b8;
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.trace-transition {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.trace-arrow {
+  color: var(--muted);
+}
+
+.trace-state {
+  padding: 1px 7px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.trace-queued  { background: rgb(148 163 184 / 0.15); color: #94a3b8; }
+.trace-created { background: rgb(148 163 184 / 0.10); color: #64748b; }
+.trace-syncing { background: rgb(124 58 237 / 0.18); color: #a78bfa; }
+.trace-synced  { background: rgb(16 185 129 / 0.18); color: #34d399; }
+.trace-failed  { background: rgb(239 68 68 / 0.18); color: #f87171; }
+
+.trace-note {
+  color: var(--muted);
+  font-size: 11px;
+  font-style: italic;
+}
+
+/* ── status-pill syncing state ───────────────────── */
+.status-pill.is-syncing {
+  background: rgb(124 58 237 / 0.18);
+  color: #a78bfa;
+  border-color: rgb(124 58 237 / 0.35);
+}
+
 .chip-row {
   display: flex;
   flex-wrap: wrap;
