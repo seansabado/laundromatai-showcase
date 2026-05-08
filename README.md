@@ -110,6 +110,12 @@ npm run validate
 - Architecture rationale and alternatives: [docs/design-tradeoffs.md](docs/design-tradeoffs.md)
 - ADR decision trail: [docs/adr/](docs/adr/)
 
+## System Design Review
+
+- Senior design review: [docs/system-design-review.md](docs/system-design-review.md)
+- Production readiness matrix: [docs/production-readiness.md](docs/production-readiness.md)
+- Failure drill walkthrough: [docs/failure-drill.md](docs/failure-drill.md)
+
 ## What I Would Improve With More Time
 
 - Incremental roadmap: [docs/roadmap-next.md](docs/roadmap-next.md)
@@ -127,6 +133,9 @@ npm run validate
   - docs/interview-walkthrough.md
   - docs/design-tradeoffs.md
   - docs/roadmap-next.md
+  - docs/system-design-review.md
+  - docs/production-readiness.md
+  - docs/failure-drill.md
   - docs/adr/
 - Frontend examples:
   - src/example-pos/

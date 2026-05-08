@@ -21,6 +21,27 @@ const StatusPill = ({ label, value }: StatusPillProps) => (
   </div>
 );
 
+interface TelemetryCardProps {
+  title: string;
+  value: string;
+  hint: string;
+}
+
+const TelemetryCard = ({ title, value, hint }: TelemetryCardProps) => (
+  <article
+    style={{
+      border: "1px solid #e2e8f0",
+      borderRadius: 8,
+      padding: 10,
+      background: "#f8fafc",
+    }}
+  >
+    <div style={{ fontSize: 12, color: "#334155" }}>{title}</div>
+    <div style={{ fontSize: 20, fontWeight: 700 }}>{value}</div>
+    <div style={{ fontSize: 12, color: "#475569" }}>{hint}</div>
+  </article>
+);
+
 export const ExamplePosModule = () => {
   const [orders, setOrders] = useState<PosOrder[]>([]);
   const [syncError, setSyncError] = useState<string | null>(null);
@@ -48,6 +69,30 @@ export const ExamplePosModule = () => {
       fakeLineItems.reduce((sum, item) => sum + item.qty * item.unitPrice, 0),
     [],
   );
+
+  const telemetry = useMemo(() => {
+    const totalActions = queue.length || 1;
+    const successRatio = (metrics.synced / totalActions) * 100;
+    const failureRatio = (metrics.failed / totalActions) * 100;
+
+    const synced = queue.filter((action) => action.syncedAt);
+    const avgLatencyMs =
+      synced.length === 0
+        ? 0
+        : Math.round(
+            synced.reduce((acc, action) => {
+              const created = new Date(action.createdAt).getTime();
+              const syncedAt = new Date(action.syncedAt as string).getTime();
+              return acc + Math.max(0, syncedAt - created);
+            }, 0) / synced.length,
+          );
+
+    return {
+      successRatio,
+      failureRatio,
+      avgLatencyMs,
+    };
+  }, [metrics.failed, metrics.synced, queue]);
 
   const createFakeOrder = () => {
     posFlow.transition("drafting");
@@ -127,6 +172,33 @@ export const ExamplePosModule = () => {
           <p style={{ color: "#b91c1c" }}>{machineError}</p>
         ) : null}
       </header>
+
+      <div>
+        <h3>Observability (Demo Telemetry)</h3>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+            gap: 8,
+          }}
+        >
+          <TelemetryCard
+            title="Sync Success Ratio"
+            value={`${telemetry.successRatio.toFixed(0)}%`}
+            hint="synced actions / total actions"
+          />
+          <TelemetryCard
+            title="Queue Failure Ratio"
+            value={`${telemetry.failureRatio.toFixed(0)}%`}
+            hint="failed actions / total actions"
+          />
+          <TelemetryCard
+            title="Estimated Sync Latency"
+            value={`${telemetry.avgLatencyMs} ms`}
+            hint="average created->synced duration"
+          />
+        </div>
+      </div>
 
       <div>
         <h3>Machines</h3>
