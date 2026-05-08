@@ -50,9 +50,10 @@ export const TenantSwitcher = () => {
         if (!value) return null;
 
         return (
-          <label style={{ display: "grid", gap: 6, maxWidth: 320 }}>
-            <span>Active Tenant</span>
+          <label className="control">
+            <span className="control-label">Active Tenant</span>
             <select
+              className="control-input"
               value={value.currentTenant?.id ?? ""}
               onChange={(event) => value.switchTenant(event.target.value)}
             >

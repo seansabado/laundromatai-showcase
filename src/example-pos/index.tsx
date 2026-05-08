@@ -41,62 +41,112 @@ export const ExamplePosModule = () => {
   };
 
   return (
-    <section style={{ fontFamily: "sans-serif", display: "grid", gap: 12 }}>
-      <header>
-        <h2>Example POS Module (Showcase)</h2>
-        <p>Status: {isOnline ? "Online" : "Offline"}</p>
-        <p>Pending Offline Actions: {pendingCount}</p>
-        <button onClick={createFakeOrder}>Create Fake Order</button>
-        <button onClick={() => void processQueue()} disabled={!isOnline}>
-          Sync Queue
-        </button>
+    <section className="module">
+      <header className="module-header">
+        <div>
+          <h2>Example POS Module</h2>
+          <p className="module-subtitle">
+            Multi-tenant safe simulation of order flow, machine state, and
+            offline queue behavior.
+          </p>
+        </div>
+
+        <div className="status-stack">
+          <span
+            className={`status-pill ${isOnline ? "is-online" : "is-offline"}`}
+          >
+            {isOnline ? "Online" : "Offline"}
+          </span>
+          <span className="status-pill">Pending Actions: {pendingCount}</span>
+        </div>
       </header>
 
-      <div>
-        <h3>Machines</h3>
-        {machines.map((machine) => (
-          <div key={machine.machineId}>
-            <strong>{machine.machineId}</strong> - {machine.state} -{" "}
-            {formatDate(machine.updatedAt)}
-            <button onClick={() => setMachineState(machine.machineId, "idle")}>
-              Set Idle
-            </button>
-            <button
-              onClick={() => setMachineState(machine.machineId, "in_use")}
-            >
-              Set In Use
-            </button>
-            <button
-              onClick={() => setMachineState(machine.machineId, "maintenance")}
-            >
-              Set Maintenance
-            </button>
-          </div>
-        ))}
+      <div className="action-row">
+        <button className="btn btn-primary" onClick={createFakeOrder}>
+          Create Fake Order
+        </button>
+        <button
+          className="btn btn-secondary"
+          onClick={() => void processQueue()}
+          disabled={!isOnline}
+        >
+          Sync Queue
+        </button>
       </div>
 
-      <div>
-        <h3>Orders</h3>
-        {orders.length === 0 ? <p>No orders yet.</p> : null}
-        {orders.map((order) => (
-          <article key={order.id}>
-            <div>Order: {order.id}</div>
-            <div>Created: {formatDate(order.createdAt)}</div>
-            <div>Status: {order.status}</div>
-            <div>Total: {formatCurrency(order.total)}</div>
-          </article>
-        ))}
-      </div>
+      <div className="section-grid">
+        <section className="panel">
+          <h3>Machines</h3>
+          <div className="list-stack">
+            {machines.map((machine) => (
+              <article key={machine.machineId} className="row-card">
+                <div>
+                  <strong>{machine.machineId}</strong>
+                  <div className="muted-row">
+                    State: {machine.state} | Updated:{" "}
+                    {formatDate(machine.updatedAt)}
+                  </div>
+                </div>
 
-      <div>
-        <h3>Offline Queue</h3>
-        {queue.length === 0 ? <p>Queue is empty.</p> : null}
-        {queue.map((action) => (
-          <div key={action.actionId}>
-            <span>{action.type}</span> - <span>{action.status}</span> -{" "}
-            <span>{formatDate(action.createdAt)}</span>
+                <div className="chip-row">
+                  <button
+                    className="btn btn-ghost"
+                    onClick={() => setMachineState(machine.machineId, "idle")}
+                  >
+                    Idle
+                  </button>
+                  <button
+                    className="btn btn-ghost"
+                    onClick={() => setMachineState(machine.machineId, "in_use")}
+                  >
+                    In Use
+                  </button>
+                  <button
+                    className="btn btn-ghost"
+                    onClick={() =>
+                      setMachineState(machine.machineId, "maintenance")
+                    }
+                  >
+                    Maintenance
+                  </button>
+                </div>
+              </article>
+            ))}
           </div>
-        ))}
+        </section>
+
+        <section className="panel">
+          <h3>Orders</h3>
+          {orders.length === 0 ? (
+            <p className="muted-empty">No orders yet.</p>
+          ) : null}
+          <div className="list-stack">
+            {orders.map((order) => (
+              <article key={order.id} className="row-card compact">
+                <div>Order: {order.id}</div>
+                <div>Created: {formatDate(order.createdAt)}</div>
+                <div>Status: {order.status}</div>
+                <div>Total: {formatCurrency(order.total)}</div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="panel">
+          <h3>Offline Queue</h3>
+          {queue.length === 0 ? (
+            <p className="muted-empty">Queue is empty.</p>
+          ) : null}
+          <div className="list-stack">
+            {queue.map((action) => (
+              <article key={action.actionId} className="row-card compact">
+                <span>{action.type}</span>
+                <span>{action.status}</span>
+                <span>{formatDate(action.createdAt)}</span>
+              </article>
+            ))}
+          </div>
+        </section>
       </div>
     </section>
   );

@@ -10,16 +10,33 @@ const ShowcaseHome = () => {
 
   return (
     <main className="app-shell">
-      <header className="card">
+      <div className="bg-orb orb-one" aria-hidden="true" />
+      <div className="bg-orb orb-two" aria-hidden="true" />
+
+      <header className="card hero-card">
+        <span className="eyebrow">Engineering Showcase</span>
         <h1>laundromatai-showcase</h1>
-        <p>Safe, non-proprietary architecture and engineering patterns.</p>
+        <p className="lead">
+          Safe, non-proprietary architecture and engineering patterns styled to
+          match the LaundromatAI marketing visual language.
+        </p>
+
         <TenantSwitcher />
-        <p>
-          Active role: <strong>{role}</strong>
-        </p>
-        <p>
-          Active tenant: <strong>{currentTenant?.name ?? "none"}</strong>
-        </p>
+
+        <div className="meta-grid">
+          <article className="meta-card">
+            <span className="meta-label">Active role</span>
+            <strong>{role}</strong>
+          </article>
+          <article className="meta-card">
+            <span className="meta-label">Active tenant</span>
+            <strong>{currentTenant?.name ?? "none"}</strong>
+          </article>
+          <article className="meta-card">
+            <span className="meta-label">Plan tier</span>
+            <strong>{currentTenant?.plan ?? "none"}</strong>
+          </article>
+        </div>
       </header>
 
       <section className="card">
